@@ -1,3 +1,10 @@
 <?php
-include_once 'services/mp/MpsServiceImpl.php';
+require_once ("services/mp/MpsServiceImpl.php");
+
+    $con = new MpsServiceImpl();
+
+
+
+?>
+
 

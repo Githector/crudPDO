@@ -1,5 +1,7 @@
 <?php
 
+require_once("IMpsService.php");
+
 class MpsServiceImpl implements IMpsService
 {
     private $host;
@@ -41,7 +43,7 @@ class MpsServiceImpl implements IMpsService
         }
     }
 
-    public function getAllMps()
+    public function getAllMps() : array
     {
         try{
             $result = $this->conexio->query("SELECT * FROM mp");
@@ -49,21 +51,23 @@ class MpsServiceImpl implements IMpsService
         }catch(PDOException $ex){
             echo "Error: " . $ex;
         }
+        return array();
     }
 
-    public function addMp($numMp, $nomMp)
+    public function addMp($numMp, $nomMp) : boolean
     {
 
         try{
             $result = $this->conexio->query("INSERT INTO mp (id_mp,num_mp,nom_mp) VALUES(null,'$numMp','$nomMp')");
             echo "Afegit<br>";
-            return $result;
+            return true;
         }catch(PDOException $ex){
             echo "Error: " . $ex;
         }
+        return false;
     }
 
-    public function getMpById($id)
+    public function getMpById($id) : Mp
     {
         try{
             $query = "SELECT * FROM mp WHERE id_mp=$id";
@@ -73,6 +77,7 @@ class MpsServiceImpl implements IMpsService
         }catch(PDOException $ex){
             echo "Error: " . $ex;
         }
+        return null;
     }
 
     public function getMpByIdP($id)

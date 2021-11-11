@@ -23,12 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae0dc3ab-c910-4eb9-b8d0-281f80b424df" name="Default Changelist" comment="1er commit">
-      <change afterPath="$PROJECT_DIR$/index2.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/mp/IMpsService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/mp/MpsServiceImpl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conexio.php" beforeDir="false" afterPath="$PROJECT_DIR$/Conexio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/index2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mp/IMpsService.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/mp/IMpsService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mp/MpsServiceImpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/mp/MpsServiceImpl.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +71,7 @@
       <workItem from="1603469459760" duration="2868000" />
       <workItem from="1603809952557" duration="9404000" />
       <workItem from="1636643611305" duration="9613000" />
+      <workItem from="1636670326347" duration="1693000" />
     </task>
     <task id="LOCAL-00001" summary="1er commit">
       <created>1603471716001</created>

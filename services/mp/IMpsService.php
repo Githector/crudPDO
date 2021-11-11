@@ -4,12 +4,12 @@ interface IMpsService
 
     public function openConnection();
     public function closeConnection();
-    public function getAllMps();
-    public function addMp($numMp,$nomMp);
-    public function getMpById($id);
-    public function getMpByIdP($id);
-    public function updateMpById($mp);
-    public function deleteMpById($id);
-    public function getMpObjectById($id);
+    public function getAllMps():array;
+    public function addMp(int $numMp, String $nomMp):boolean;
+    public function getMpById(String $id):Mp;
+    public function getMpByIdP(String $id):Mp;
+    public function updateMpById(String $id):Mp;
+    public function deleteMpById(String $id):Mp;
+    public function getMpObjectById(String $id):Mp;
 
 }
