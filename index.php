@@ -6,42 +6,50 @@ include_once 'Mp.php';
 $con = new Conexio();
 $con->openConnection();
 
+echo htmlspecialchars($_GET['nomMp']);
 
-$id = $_GET["id"];
-
-
-
-/*
+//http://localhost/?nomMp=%3Cscript%3Ealert(%22Hello%22)%3C/script%3E
 
 
-$result = $con->getMpById($id);
+//Afegir Mp directe
+$con->addMp(8,"sdlkf");
 
-foreach ($result as $mp){
-    echo $mp['num_mp'] . ' - ' . $mp['nom_mp'] . '<br>';
-}
+echo $con->getMpObjectById(4)->getNomMp();
 
-$result = $con->getMpByIdP($id);
+//Afegir un Mp a través de dades rebudes amb get
+//$con->addMp($_GET['numMp'],$_GET['nomMp']);
 
-foreach ($result as $mp){
+//Consulta llista de Mps
+//$result = $con->getAllMps();
+/*foreach ($result as $mp){
+    echo $mp["num_mp"] . " -> " . $mp["nom_mp"] . "<br>";
+}*/
+
+//Consulta de un MP
+/*$res = $con->getMpById($_GET['id']);
+foreach ($res as $mp){
     echo $mp['num_mp'] . ' - ' . $mp['nom_mp'] . '<br>';
 }*/
 
+//URL's possibles
+//http://localhost/?id=2
+//http://localhost/?id=2 or 1=1
+//http://localhost/?id=2; DROP TABLE mp;
 
 
-$mp = $con->getMpObjectById(5);
+//Si ara ho fem amb l'altre mètode'
 
-echo "Dades rebudes a index.php: <br>";
-echo $mp->getNomMp() . '<br>';
-echo $mp->getNumMp() . '<br>';
-echo $mp->getIdMp() . '<br>';
-$mp->setNomMp("Bases de dades");
-$con->updateMpById($mp);
-$con->deleteMpById(15);
-
-
+/*$res = $con->getMpByIdP($_GET['id']);
+foreach ($res as $mp){
+    echo $mp['num_mp'] . ' - ' . $mp['nom_mp'] . '<br>';
+}*/
 
 
 
 
 
 $con->closeConnection();
+
+?>
+
+

@@ -1,7 +1,6 @@
 <?php
 
-include_once 'Mp.php';
-class Conexio
+class MpsServiceImpl implements IMpsService
 {
     private $host;
     private $db;
@@ -19,7 +18,8 @@ class Conexio
         $this->pass = "123456";
     }
 
-    public function openConnection(){
+    public function openConnection()
+    {
         try {
             $this->conexio = new PDO($this->dsn, $this->user, $this->pass);
             echo 'Connexio ok<br>';
@@ -28,10 +28,10 @@ class Conexio
             echo "Error: " . $ex;
             return null;
         }
-
     }
 
-    public function closeConnection(){
+    public function closeConnection()
+    {
         try {
             $this->conexio=null;
             return $this->conexio;
@@ -39,20 +39,20 @@ class Conexio
             echo "Error: " . $ex;
             return null;
         }
-
     }
 
-    public function getAllMps(){
+    public function getAllMps()
+    {
         try{
             $result = $this->conexio->query("SELECT * FROM mp");
             return $result;
         }catch(PDOException $ex){
             echo "Error: " . $ex;
         }
-
     }
 
-    public function addMp($numMp,$nomMp){
+    public function addMp($numMp, $nomMp)
+    {
 
         try{
             $result = $this->conexio->query("INSERT INTO mp (id_mp,num_mp,nom_mp) VALUES(null,'$numMp','$nomMp')");
@@ -61,10 +61,10 @@ class Conexio
         }catch(PDOException $ex){
             echo "Error: " . $ex;
         }
-
     }
 
-    public function getMpById($id){
+    public function getMpById($id)
+    {
         try{
             $query = "SELECT * FROM mp WHERE id_mp=$id";
             //echo $query . '<br>';
@@ -73,10 +73,10 @@ class Conexio
         }catch(PDOException $ex){
             echo "Error: " . $ex;
         }
-
     }
 
-    public function getMpByIdP($id){
+    public function getMpByIdP($id)
+    {
         try{
             //echo $id . '<br>';
             $statement = $this->conexio->prepare("SELECT * FROM mp WHERE id_mp= ?");
@@ -87,17 +87,16 @@ class Conexio
             );*/
             $statement->execute(
                 array($id)
-        );
+            );
             $result = $statement->fetchAll();
             return $result;
         }catch(PDOException $ex){
             echo "Error: " . $ex;
         }
-
     }
 
-
-    public function updateMpById($mp){
+    public function updateMpById($mp)
+    {
         try{
             echo "Dades rebudes a updateMpById: <br>";
             echo $mp->getNomMp() . '<br>';
@@ -118,7 +117,8 @@ class Conexio
         }
     }
 
-    public function deleteMpById($id){
+    public function deleteMpById($id)
+    {
         try{
             $querySql = "DELETE FROM mp WHERE id_mp=?";
             $statement = $this->conexio->prepare($querySql);
@@ -132,7 +132,8 @@ class Conexio
         }
     }
 
-    public function getMpObjectById($id){
+    public function getMpObjectById($id)
+    {
         try{
             $query = "SELECT * FROM mp WHERE id_mp=:id";
             $statement = $this->conexio->prepare($query);
@@ -152,12 +153,7 @@ class Conexio
         }catch(PDOException $ex){
             echo "Error: " . $ex;
         }
-
     }
 
 
-
-//https://academy.leewayweb.com/como-evitar-inyeccion-sql-php/
-//https://xkcd.com/327/
 }
-
