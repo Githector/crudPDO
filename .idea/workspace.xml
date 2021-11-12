@@ -23,8 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae0dc3ab-c910-4eb9-b8d0-281f80b424df" name="Default Changelist" comment="1er commit">
+      <change afterPath="$PROJECT_DIR$/index3.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/index2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mp.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Mp.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index2.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/services/mp/IMpsService.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/mp/IMpsService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/mp/MpsServiceImpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/services/mp/MpsServiceImpl.php" afterDir="false" />
     </list>
@@ -60,6 +63,11 @@
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/model" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -72,6 +80,7 @@
       <workItem from="1603809952557" duration="9404000" />
       <workItem from="1636643611305" duration="9613000" />
       <workItem from="1636670326347" duration="1693000" />
+      <workItem from="1636720336689" duration="5394000" />
     </task>
     <task id="LOCAL-00001" summary="1er commit">
       <created>1603471716001</created>

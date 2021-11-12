@@ -43,18 +43,27 @@ class MpsServiceImpl implements IMpsService
         }
     }
 
-    public function getAllMps() : array
+
+
+
+
+
+
+    public function addMp($numMp, $nomMp) : bool
     {
         try{
-            $result = $this->conexio->query("SELECT * FROM mp");
-            return $result;
+            $statement = $this->conexio->prepare("INSERT INTO mp (id_mp,num_mp,nom_mp) VALUES(1,?,?)");
+            $res = $statement->execute(
+                array($numMp,$nomMp)
+            );
+            return $res;
         }catch(PDOException $ex){
             echo "Error: " . $ex;
         }
-        return array();
+        return false;
     }
 
-    public function addMp($numMp, $nomMp) : boolean
+    public function addMpOld($numMp, $nomMp) : bool
     {
 
         try{
@@ -67,94 +76,76 @@ class MpsServiceImpl implements IMpsService
         return false;
     }
 
-    public function getMpById($id) : Mp
+    public function getAllMps() : array
     {
+
         try{
-            $query = "SELECT * FROM mp WHERE id_mp=$id";
-            //echo $query . '<br>';
-            $result = $this->conexio->query($query);
+            $statement = $this->conexio->prepare("SELECT * FROM mp");
+            $statement->execute();
+            $result = $statement->fetchAll();
+
             return $result;
         }catch(PDOException $ex){
             echo "Error: " . $ex;
         }
-        return null;
+        return array();
     }
 
-    public function getMpByIdP($id)
+    public function getAllMpsOld() : array
     {
         try{
-            //echo $id . '<br>';
+            $result = $this->conexio->query("SELECT * FROM mp");
+
+            return $result;
+        }catch(PDOException $ex){
+            echo "Error: " . $ex;
+        }
+        return array();
+    }
+
+    public function getMpById($id) : Mp
+    {
+       $mp = null;
+        try{
+
             $statement = $this->conexio->prepare("SELECT * FROM mp WHERE id_mp= ?");
-            /*$statement->execute(
-                array(
-                    ':id' => $id
-                )
-            );*/
             $statement->execute(
                 array($id)
             );
-            $result = $statement->fetchAll();
+            $result = $statement->fetch();
+            $mp = new Mp($result['id_mp'],$result['num_mp'],$result['nom_mp']);
+            return $mp;
+        }catch(PDOException $ex){
+            echo "Error: " . $ex;
+            return $mp;
+        }
+    }
+
+    public function getMpByIdOld($id)
+    {
+        $mp = null;
+        try{
+            $query = "SELECT * FROM mp WHERE id_mp=$id";
+            $result = $this->conexio->query($query);
+
             return $result;
         }catch(PDOException $ex){
             echo "Error: " . $ex;
+            return $mp;
         }
+
     }
 
     public function updateMpById($mp)
     {
         try{
-            echo "Dades rebudes a updateMpById: <br>";
-            echo $mp->getNomMp() . '<br>';
-            echo $mp->getNumMp() . '<br>';
-            echo $mp->getIdMp() . '<br>';
             $querySql = "UPDATE mp SET nom_mp=?, num_mp=? WHERE id_mp=?";
             $statement = $this->conexio->prepare($querySql);
             $statement->execute(array(
                 $mp->getNomMp(),
                 $mp->getNumMp(),
                 $mp->getIdMp()
-
             ));
-
-
-        }catch(PDOException $ex){
-            echo "Error: " . $ex;
-        }
-    }
-
-    public function deleteMpById($id)
-    {
-        try{
-            $querySql = "DELETE FROM mp WHERE id_mp=?";
-            $statement = $this->conexio->prepare($querySql);
-            $statement->execute(array(
-                $id
-            ));
-
-
-        }catch(PDOException $ex){
-            echo "Error: " . $ex;
-        }
-    }
-
-    public function getMpObjectById($id)
-    {
-        try{
-            $query = "SELECT * FROM mp WHERE id_mp=:id";
-            $statement = $this->conexio->prepare($query);
-            $statement->execute(
-                array(
-                    ':id' => $id
-                )
-            );
-
-            $result = $statement->fetch();
-            echo "Result <br>";
-            //$statement->setFetchMode(PDO::FETCH_CLASS, 'Mp');
-            //$mp = $statement->fetch();
-            $mp = new Mp($result['id_mp'],$result['num_mp'],$result['nom_mp']);
-
-            return $mp;
         }catch(PDOException $ex){
             echo "Error: " . $ex;
         }
